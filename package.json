@@ -1,0 +1,11 @@
+{
+  "name": "vue.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sirwan Afifi",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "vue": "^2.5.16"
+  }
+}
