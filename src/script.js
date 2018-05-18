@@ -70,7 +70,14 @@ var vueObject = {
     }
 });*/
 Vue.config.devtools = true;
+var dt = {
+    stars: 5,
+    hover: 5
+};
 Vue.component('blogPost', {
+    data: function() {
+        return dt;
+    },
     props: {
         post: {
             type: Object,
@@ -92,9 +99,18 @@ Vue.component('blogPost', {
             }
         }
     },
-    template: `<div>
+    template: `<div class="blog-post">
                     <h1>{{ post.title }}</h1>
                     <p>{{ post.body }}</p>
+                    <div class="star-wrap">
+                        <span v-for="n in 5"
+                            class="star"
+                            :class="{ full: hover >= n+1 }"
+                            @click="stars = n+1"
+                            @mouseover="hover = n+1"
+                            @mouseout="hover = stars"
+                        ></span>
+                    </div>
                </div>`
 });
 
@@ -103,7 +119,8 @@ new Vue({
     data() {
         return {
             posts: [
-                { title: 'Introduction to Vue.js', body: 'This is an introduction to vue.js .....' }
+                { title: 'Introduction to Vue.js', body: 'This is an introduction to vue.js .....' },
+                { title: 'Vue is fun!', body: 'This is an introduction to vue.js .....' }
             ],
             name: 'DNT!'
         }
