@@ -18,7 +18,9 @@
             <p>Vue :) </p>
             <p class="lead">
                 <div id="app">
-                    <user :user="{name: 'Sirwan', lastName: 'Afifi'}"></user>
+                    <div v-for="post in posts">
+                        <blog-post :post="post"></blog-post>
+                    </div>
                 </div>
             </p>
         </div>
@@ -26,9 +28,9 @@
 
 
 
- 
 
-    <script src="./node_modules/vue/dist/vue.min.js"></script>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
     <script src="./src/script.js"></script>
 </body>
 

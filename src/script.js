@@ -45,7 +45,7 @@ var vueObject = {
                </div>`*/
 };
 
-Vue.component('user', {
+/*Vue.component('user', {
     props: {
         user: {
             type: Object,
@@ -54,6 +54,53 @@ Vue.component('user', {
         }
     },
     template: `<p>{{ user.name }} - {{ user.lastName }}</p>`
+});*/
+
+//new Vue(vueObject);
+
+/*new Vue({
+    el: '#app',
+    data() {
+        return {
+            blogTitle: 'DNT'
+        }
+    },
+    render: function (createElement) {
+        return createElement('h1', this.blogTitle)
+    }
+});*/
+Vue.config.devtools = true;
+Vue.component('blogPost', {
+    props: {
+        post: {
+            type: Object,
+            required: true,
+            validator: obj => {
+                const titleIsValid = typeof obj.title === 'string';
+                const bodyIsValid = typeof obj.body === 'string';
+                const isValid = titleIsValid && bodyIsValid;
+                if (!isValid) {
+                    console.warn("prop is not valid");
+                    return false;
+                }
+                return true;
+            }
+        }
+    },
+    template: `<div>
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.body }}</p>
+               </div>`
 });
 
-new Vue(vueObject);
+new Vue({
+    el: '#app',
+    data() {
+        return {
+            posts: [
+                { title: 'Introduction to Vue.js', body: 'This is an introduction to vue.js .....' }
+            ],
+            name: 'DNT!'
+        }
+    }
+});
