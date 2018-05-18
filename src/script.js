@@ -70,13 +70,12 @@ var vueObject = {
     }
 });*/
 Vue.config.devtools = true;
-var dt = {
-    stars: 5,
-    hover: 5
-};
 Vue.component('blogPost', {
-    data: function() {
-        return dt;
+    data: function () {
+        return {
+            stars: 5,
+            hover: 5
+        };
     },
     props: {
         post: {
@@ -91,7 +90,7 @@ Vue.component('blogPost', {
                 }
                 return true;
             },
-            default: function() {
+            default: function () {
                 return {
                     title: 'Vue is fun!',
                     body: 'Vue is fun..................'
