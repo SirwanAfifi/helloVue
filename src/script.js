@@ -31,6 +31,7 @@ var vueObject = {
     template: `<div class="row justify-content-around">
                    <div class="row">
                         <div class="col">
+                            <users></users>
                             <input type="text" v-model="searchInput" />
                         </div>
                     </div>
@@ -45,4 +46,8 @@ var vueObject = {
                </div>`
 };
 
-new Vue(vueObject)
+Vue.component('users', {
+    template: '<p>Users....</p>'
+});
+
+new Vue(vueObject);
