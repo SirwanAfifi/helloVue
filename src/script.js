@@ -27,11 +27,10 @@ var vueObject = {
             let filterPattern = new RegExp(this.searchInput, 'i');
             return this.users.filter(user => user.name.match(filterPattern));
         }
-    },
+    }/*,
     template: `<div class="row justify-content-around">
                    <div class="row">
                         <div class="col">
-                            <users></users>
                             <input type="text" v-model="searchInput" />
                         </div>
                     </div>
@@ -43,11 +42,18 @@ var vueObject = {
                             </div>
                         </div>
                     </div>
-               </div>`
+               </div>`*/
 };
 
-Vue.component('users', {
-    template: '<p>Users....</p>'
+Vue.component('user', {
+    props: {
+        user: {
+            type: Object,
+            required: false,
+            default: { name: 'Sana', lastName: 'Afifi' }
+        }
+    },
+    template: `<p>{{ user.name }} - {{ user.lastName }}</p>`
 });
 
 new Vue(vueObject);
