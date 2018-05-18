@@ -74,7 +74,6 @@ Vue.component('blogPost', {
     props: {
         post: {
             type: Object,
-            required: true,
             validator: obj => {
                 const titleIsValid = typeof obj.title === 'string';
                 const bodyIsValid = typeof obj.body === 'string';
@@ -84,6 +83,12 @@ Vue.component('blogPost', {
                     return false;
                 }
                 return true;
+            },
+            default: function() {
+                return {
+                    title: 'Vue is fun!',
+                    body: 'Vue is fun..................'
+                }
             }
         }
     },
