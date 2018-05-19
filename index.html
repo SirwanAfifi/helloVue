@@ -18,6 +18,11 @@
             <p>Vue :) </p>
             <p class="lead">
                 <div id="app">
+
+                    <child :message="name" @change-name="name = $event"></child>
+
+                    <hr />
+
                     <div v-for="post in posts">
                         <blog-post :post="post"></blog-post>
                     </div>
@@ -26,9 +31,28 @@
         </div>
     </div>
 
+    <script type="text/x-template" id="child-template">
+        <div>
+            <p>{{ message }}</p>
+            <button @click="changeName">Change Name</button>
+        </div>
+    </script>
 
-
-
+    <script type="text/x-template" id="post-template">
+        <div class="blog-post">
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.body }}</p>
+                <div class="star-wrap">
+                    <span v-for="n in 5"
+                        class="star"
+                        :class="{ full: hover >= n+1 }"
+                        @click="stars = n+1"
+                        @mouseover="hover = n+1"
+                        @mouseout="hover = stars"
+                    ></span>
+                </div>
+           </div>
+    </script>
 
     <script src="./node_modules/vue/dist/vue.js"></script>
     <script src="./src/script.js"></script>
@@ -68,6 +92,8 @@
             margin: 10px;
         }
     </style>
+
+    
 
 </body>
 

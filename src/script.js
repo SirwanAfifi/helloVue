@@ -98,19 +98,18 @@ Vue.component('blogPost', {
             }
         }
     },
-    template: `<div class="blog-post">
-                    <h1>{{ post.title }}</h1>
-                    <p>{{ post.body }}</p>
-                    <div class="star-wrap">
-                        <span v-for="n in 5"
-                            class="star"
-                            :class="{ full: hover >= n+1 }"
-                            @click="stars = n+1"
-                            @mouseover="hover = n+1"
-                            @mouseout="hover = stars"
-                        ></span>
-                    </div>
-               </div>`
+    template: '#post-template'
+});
+
+Vue.component('child', {
+    props: ['message'],
+    methods: {
+        changeName() {
+            this.message = "New Name!...",
+            this.$emit("change-name", this.message);
+        }
+    },
+    template: '#child-template'
 });
 
 new Vue({
